@@ -21,7 +21,8 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ['New Arrival', 'Eid Special', 'Daily Basis', 'Winter', 'Summer', 'Spring', 'Autumn']
-    }
+    },
+    stock: {type: Number}
     
 },{timestamps: true})
 

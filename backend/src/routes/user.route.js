@@ -6,16 +6,7 @@ import { registerUser, loginUser, logOutUser, refreshAccessToken } from '../cont
 import upload from '../middleware/multer.js';
 import {verifyJWT} from '../middleware/authentication.js';
 
-router.post('/register', upload.fields([
-    {
-        name: "avatar",
-        maxCount: 1
-    },
-    {
-        name: "coverImage",
-        maxCount: 1
-    }
-]), asyncHandler(registerUser))
+router.post('/register', asyncHandler(registerUser))
 router.post('/login' ,asyncHandler(loginUser))
 router.post('/logout', verifyJWT ,asyncHandler(logOutUser))
 router.post('/refreshToken', verifyJWT ,asyncHandler(refreshAccessToken))

@@ -13,8 +13,6 @@ const userSchema = new mongoose.Schema({
   },
   city: {type: String, trim: true},
   address: {type: String, trim: true},
-  avatar: { type: String, required: true },
-  coverImage: { type: String, required: true },
   refreshToken: { type: String},
   //userHistory: { type: mongoose.Schema.types.ObjectId, ref: 'Video' },
   createdAt: { type: Date, default: Date.now }
@@ -31,7 +29,8 @@ userSchema.methods.generateAccessToken = function(){
   return jwt.sign({
     _id : this._id,
     email : this.email,
-    fullname : this.fullname
+    fullname : this.fullname,
+    role: this.role
   },
   process.env.ACCESS_TOKEN_SECRET,
   {
